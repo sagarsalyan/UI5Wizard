@@ -1,0 +1,139 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Add Item">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
+			<l:content>
+				<f:SimpleForm id="idAddItemForm"
+					editable="true"
+					layout="ResponsiveGridLayout"
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" >
+					<f:content>
+						<Input id="itmnmbr" value="{itemModel>/Zznumbertodeliver}" visible="false"/>
+						<Label text="A">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<ComboBox id="a" items="" placeholder="Account Category" required="true" value="" selectionChange="validateaccgrp">
+							<core:Item key="K" text="CostCenter" />
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</ComboBox>
+						<Label text="Material" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="material" value="{itemModel>/Zzmaterialno}" required="true" placeholder="Material no." valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_handleMaterialHelp">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Price" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="price" value="{itemModel>/Znetprice}" placeholder="Price" editable="false">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Quantity" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="qty" value="{itemModel>/Zztargetqauntity}" required="true" placeholder="Quantity" type="Number" liveChange="validateMatQty">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Material Group" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>
+						<Input id="matgrp" value="{itemModel>/ZzMgroupDes}-{itemModel>/Zmaterialgroup}" placeholder="Material Group" editable="false" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Order Unit" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="oun" value="{itemModel>/ZzOrderDes}-{itemModel>/Zorderunit}" required="true" placeholder="Order Unit" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_handleOrderUnitHelp">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+					
+						<Label text="Short Text" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="shorttext" value="{itemModel>/Zztext}" placeholder="Description" editable="false">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Storage Location" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="stoloc" value="{itemModel>/ZzstorageDes}-{itemModel>/Zstoragelocation}" required="true" placeholder="Storage Location" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="_handleStorageLocHelp">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						<Label text="Plant" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="plant" value="{itemModel>/ZzplantDes}-{itemModel>/Zplant}" placeholder="Plant" editable="false">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>
+						
+						<Label text="Purchase Grp" >
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Label>	
+						<Input id="purGrp" value="{itemModel>/ZzPurgDes}-{itemModel>/Zzpurcgroup}" placeholder="Purchase Group" editable="false">
+							<layoutData>
+								<l:GridData span="XL2 L3 M3 S3"/>
+							</layoutData>
+						</Input>	
+					</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>	
+		<buttons>
+			<Button text="Insert" type="Accept" press="onInsert" tooltip="Insert"/>
+			<Button text="Close" type="Reject" press="onClose" tooltip="Close"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,121 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" controllerName="Application.WizardTemplate.controller.Wizard"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>create}">
+				<content>
+					<Wizard id="CreateProductWizard"
+								complete="wizardCompletedHandler"
+								showNextButton="true"
+								enableBranching="false">
+							<WizardStep id="BasicInfoStep"
+										title="Basic Information"
+										icon="sap-icon://customer"
+										nextStep="AddressInfoStep"
+										complete="step1complt"
+										validated="false">
+								<VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplay354"
+									editable="true"
+									layout="ResponsiveGridLayout"
+									title="Address"
+									labelSpanXL="3"
+									labelSpanL="3"
+									labelSpanM="3"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="4"
+									emptySpanL="4"
+									emptySpanM="4"
+									emptySpanS="0"
+									columnsXL="1"
+									columnsL="1"
+									columnsM="1"
+									singleContainerFullSize="false" >
+									<f:content>
+										<Label text="FirstName" />
+										<Input id="fname" value="" />
+										<Label text="LastName" />
+										<Input value="" id="lname"/>
+										
+									</f:content>
+								</f:SimpleForm>
+								<Button text="+" id="btnFragment" type="Emphasized" press="_handleFragmentHelp"/>
+								<Button text="Next" id="btnBasic" type="Emphasized" press="onBasicBtnPress"/>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="AddressInfoStep"
+										title="Address Details"
+										icon="sap-icon://addresses"
+										validated="false">
+								<VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplay355"
+									editable="true"
+									layout="ResponsiveGridLayout"
+									title="Address"
+									labelSpanXL="3"
+									labelSpanL="3"
+									labelSpanM="3"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="4"
+									emptySpanL="4"
+									emptySpanM="4"
+									emptySpanS="0"
+									columnsXL="1"
+									columnsL="1"
+									columnsM="1"
+									singleContainerFullSize="false" >
+									<f:content>
+										<Label text="Street/No." />
+										<Input value="" id="sno" />
+										<Label text="ZIP Code/City" />
+										<Input value="" id="zip"/>
+										<Label text="Country" />
+										<Input id="countryText" value="" />
+									</f:content>
+								</f:SimpleForm>
+								<Button text="Next" id="btnAddress" type="Emphasized" press="onAddressBtnPress"/>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="BankInfoStep"
+										title="Bank Details"
+										icon="sap-icon://simple-payment"
+										validated="false">
+								<VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormDisplay356"
+									editable="true"
+									layout="ResponsiveGridLayout"
+									title="Address"
+									labelSpanXL="3"
+									labelSpanL="3"
+									labelSpanM="3"
+									labelSpanS="12"
+									adjustLabelSpan="false"
+									emptySpanXL="4"
+									emptySpanL="4"
+									emptySpanM="4"
+									emptySpanS="0"
+									columnsXL="1"
+									columnsL="1"
+									columnsM="1"
+									singleContainerFullSize="false" >
+									<f:content>
+										<Label text="Bank Name" />
+										<Input value="" id="bname" />
+										<Label text="IFSC Code" />
+										<Input value="" id="ifsc"/>
+										<Label text="Account Number" />
+										<Input id="accno" value="" />
+									</f:content>
+								</f:SimpleForm>
+								<Button text="Save" id="btnSave" type="Emphasized" press="onSaveBtnPress"/>
+								</VBox>
+							</WizardStep>
+					</Wizard>	
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
