@@ -84,6 +84,13 @@
 					]
 				},
 				{
+					"name": "Test",
+					"pattern": "",
+					"target": [
+						"Test"
+					]
+				},
+				{
 					"name": "Wizard",
 					"pattern": "",
 					"target": [

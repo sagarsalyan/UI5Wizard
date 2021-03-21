@@ -3,7 +3,19 @@
 	<App>
 		<pages>
 			<Page title="Title">
-				<content></content>
+				<content>
+					<Wizard id="CreateProductWizard" complete="wizardCompletedHandler" showNextButton="true" enableBranching="false">
+						<WizardStep id="noticreated" title="Notification Created" icon="sap-icon://customer" nextStep="pmoassigned" complete="step1complt"
+							validated="false"/>
+						<WizardStep id="pmoassigned" title="PMO Assigned" icon="sap-icon://customer" nextStep="AddressInfoStep" complete="step1complt"
+							validated="false"/>
+					</Wizard>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<Button text="Next" press="onNext"/>
+					</OverflowToolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>
