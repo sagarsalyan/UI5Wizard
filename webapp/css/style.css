@@ -1,1 +1,16 @@
 /* Enter your custom styles here */
+ .wizardNoContent .sapMWizard .sapMWizardStepContainer {
+    position: relative;
+    height: calc(100% - 4rem);
+    box-sizing: none;
+    padding: 0;
+}
+
+
+ .wizardNoContent .sapMWizard .sapMWizardStepActivated {
+    display: none;
+}
+
+.wizardNoContent .sapMWizard .sapMWizardProgressNav {
+    box-shadow: none;
+}

@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("Application.WizardTemplate.controller.Test", {
+	return Controller.extend("Application.WizardTemplate.controller.ObjectPage", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -11,10 +11,11 @@ sap.ui.define([
 		 * @memberOf Application.WizardTemplate.view.Test
 		 */
 		onInit: function () {
-
+			this .getView().byId("CreateProductWizard")._getProgressNavigator().ontap = function(){}; //no action on tap
 		},
 		onNext:function(){
 			this.getView().byId("CreateProductWizard").nextStep()
+			
 		}
 
 		/**

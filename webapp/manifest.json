@@ -84,10 +84,10 @@
 					]
 				},
 				{
-					"name": "Test",
-					"pattern": "test",
+					"name": "ObjectPage",
+					"pattern": "",
 					"target": [
-						"Test"
+						"ObjectPage"
 					]
 				},
 				{
@@ -98,7 +98,7 @@
 					]
 				},{
 					"name": "ProductStatus",
-					"pattern": "",
+					"pattern": "p",
 					"target": [
 						"ProductStatus"
 					]
@@ -116,9 +116,9 @@
 					"viewType": "XML",
 					"viewName": "Wizard"
 				},
-				"Test": {
+				"ObjectPage": {
 					"viewType": "XML",
-					"viewName": "Test"
+					"viewName": "ObjectPage"
 				},
 				"ProductStatus": {
 					"viewType": "XML",

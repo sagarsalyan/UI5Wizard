@@ -1,0 +1,32 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="Application.WizardTemplate.controller.ObjectPage"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:uxap="sap.uxap">
+	<App>
+		<pages>
+			<Page title="Title">
+				<content>
+					<uxap:ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" class="wizardNoContent">
+						<uxap:headerTitle>
+							<uxap:ObjectPageHeader objectTitle="Section sample"></uxap:ObjectPageHeader>
+						</uxap:headerTitle>
+						<uxap:headerContent>
+							<!--<ObjectAttribute title="" text="This example explains the rules for the rendering of sections"/>-->
+							<Wizard id="CreateProductWizard" complete="wizardCompletedHandler" showNextButton="true" enableBranching="false" width="100%">
+								<WizardStep id="noticreated" title="Notification Created" icon="sap-icon://customer" nextStep="pmoassigned" complete="step1complt"
+									validated="false"/>
+								<WizardStep id="pmoassigned" title="PMO Assigned" icon="sap-icon://customer" nextStep="AddressInfoStep" complete="step1complt"
+									validated="false"/>
+								<WizardStep id="pmoassigned2" title="PMO Assigned2" icon="sap-icon://customer" nextStep="AddressInfoStep" complete="step1complt"
+									validated="false"/>
+							</Wizard>
+						</uxap:headerContent>
+					</uxap:ObjectPageLayout>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<Button text="Next" press="onNext"/>
+					</OverflowToolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
