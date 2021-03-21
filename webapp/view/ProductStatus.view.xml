@@ -1,0 +1,153 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="Application.WizardTemplate.controller.ProductStatus" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Product Status">
+				<content>
+					<HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+							<Label text="Purchase Order Number:" class="sapUiMediumMarginBegin sapUiTinyMarginTop" design="Bold"/>
+							<Input value="{viewInitialModel>/PONumber}" id="PONumId" width="100%" class="sapUiTinyMarginBegin" showValueHelp="true"
+								valueHelpRequest="onPONumValuehelp"/>
+							<Button text="check Status" type="Emphasized" press="onCheckStatus" class="sapUiMediumMarginBegin sapUiTinyMarginTopS"/>
+						</HBox>
+						<Wizard visible="{viewInitialModel>/visibleWizard}" id="POStatusWizard" finishButtonText="Finish"
+							class="sapUiResponsivePadding--header sapUiResponsivePadding--content" showNextButton="false">
+							<WizardStep id="POCreated" visible="{=${POStatusModel>/POCreate} === 'X' ? true : false}" title="PO Created"
+								activate="wizardCompletedHandler">
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="POCreatedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false" visible="true">
+										<f:content>
+											<Label text="PO Number"/>
+											<Text id="nameText" text="{POStatusModel>/PONum}"/>
+											<Label text="PurchaseId"/>
+											<Text text="{POStatusModel>/PurchaseId}"/>
+											<Label text="PurchaseId Name"/>
+											<Text text="{POStatusModel>/PurchaseName}"/>
+											<Label text="Recommended Delivery Date"/>
+											<Text id="countryText" text="{POStatusModel>/RecommendedDelDate}"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="POApprovedbySupplier" visible="{=${POStatusModel>/POApprovedbySupplier} ==='X' ? true : false}" title="PO Approval stage1"
+								activate="wizardCompletedHandler">
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="POApprovedBySupplyDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false"  visible="true">
+										<f:content>
+											<Label text="Created on"/>
+											<Text id="createdDate"
+												text="{path:'POStatusModel>/CreatedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Created by"/>
+											<Text text="{POStatusModel>/CreatedBy}"/>
+											<Label text="Supply And Logistics Officer"/>
+											<Text text="{POStatusModel>/ApprovedBySupply}"/>
+											<Label text="Chief Of Programme"/>
+											<Text text="{POStatusModel>/ChiefOfProgramme}"/>
+											<Label text="Recommended Delivery Date"/>
+											<Text
+												text="{path:'POStatusModel>/RecommendedDelDate',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Purchase Order Type"/>
+											<Text text="{POStatusModel>/POType}"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="POApprovedbyProgrammer" visible="{=${POStatusModel>/POApprovedbyProgrammer} === 'X' ? true : false}"
+								title="PO Approval stage2" activate="wizardCompletedHandler">
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="POApprovedByProgrammeDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false"  visible="true">
+										<f:content>
+											<Label text="Created on"/>
+											<Text
+												text="{path:'POStatusModel>/CreatedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Approved on"/>
+											<Text
+												text="{path:'POStatusModel>/ApprovedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Supply And Logistics Officer"/>
+											<Text text="{POStatusModel>/ApprovedBySupply}"/>
+											<Label text="Programme Officer"/>
+											<Text text="{POStatusModel>/ApprovedByProgramme}"/>
+											<Label text="Chief Of Programme"/>
+											<Text text="{POStatusModel>/ChiefOfProgramme}"/>
+											<Label text="Recommended Delivery Date"/>
+											<Text
+												text="{path:'POStatusModel>/RecommendedDelDate',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Purchase Order Type "/>
+											<Text text="{POStatusModel>/POType}"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="POPicked" visible="{=${POStatusModel>/POPicked} === 'X' ? true : false}" activate="wizardCompletedHandler" title="PO Picked">
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="POPickedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false"  visible="true">
+										<f:content>
+											<Label text="Created on"/>
+											<Text
+												text="{path:'POStatusModel>/CreatedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Supply And Logistics Officer"/>
+											<Text text="{POStatusModel>/ApprovedBySupply}"/>
+											<Label text="Approved on"/>
+											<Text
+												text="{path:'POStatusModel>/ApprovedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Programme Officer"/>
+											<Text text="{POStatusModel>/ApprovedByProgramme}"/>
+											<Label text="Chief Of Programme"/>
+											<Text text="{POStatusModel>/ChiefOfProgramme}"/>
+											<Label text="Recommended Delivery Date"/>
+											<Text
+												text="{path:'POStatusModel>/RecommendedDelDate',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Purchase Order Type "/>
+											<Text text="{POStatusModel>/POType}"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+							</WizardStep>
+							<WizardStep id="POLoaded" visible="{=${POStatusModel>/POLoaded} === 'X' ? true : false}" activate="wizardCompletedHandler" title="PO Loaded">
+								<VBox class="sapUiSmallMargin">
+									<f:SimpleForm id="POLoadedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+										singleContainerFullSize="false"  visible="true">
+										<f:content>
+											<Label text="Created on"/>
+											<Text
+												text="{path:'POStatusModel>/CreatedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Supply And Logistics Officer"/>
+											<Text text="{POStatusModel>/ApprovedBySupply}"/>
+											<Label text="Approved on"/>
+											<Text
+												text="{path:'POStatusModel>/ApprovedOn', type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Programme Officer"/>
+											<Text text="{POStatusModel>/ApprovedByProgramme}"/>
+											<Label text="Chief Of Programme"/>
+											<Text text="{POStatusModel>/ChiefOfProgramme}"/>
+											<Label text="Recommended Delivery Date"/>
+											<Text
+												text="{path:'POStatusModel>/RecommendedDelDate',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Purchase Order Type "/>
+											<Text text="{POStatusModel>/POType}"/>
+											<Label text="Purchase Order Picked On "/>
+											<Text
+												text="{path:'POStatusModel>/POPickedOn',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+											<Label text="Purchase Order Loaded On "/>
+											<Text
+												text="{path:'POStatusModel>/POLoadedOn',type: 'sap.ui.model.type.Date',formatOptions: { source: { pattern: 'ddMMyyyy' }, pattern: 'dd-MMM-yyyy' }}"/>
+										</f:content>
+									</f:SimpleForm>
+								</VBox>
+							</WizardStep>
+						</Wizard>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

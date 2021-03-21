@@ -85,16 +85,22 @@
 				},
 				{
 					"name": "Test",
-					"pattern": "",
+					"pattern": "test",
 					"target": [
 						"Test"
 					]
 				},
 				{
 					"name": "Wizard",
-					"pattern": "",
+					"pattern": "wizard",
 					"target": [
 						"Wizard"
+					]
+				},{
+					"name": "ProductStatus",
+					"pattern": "",
+					"target": [
+						"ProductStatus"
 					]
 				}
 			],
@@ -113,6 +119,10 @@
 				"Test": {
 					"viewType": "XML",
 					"viewName": "Test"
+				},
+				"ProductStatus": {
+					"viewType": "XML",
+					"viewName": "ProductStatus"
 				}
 			}
 		}
