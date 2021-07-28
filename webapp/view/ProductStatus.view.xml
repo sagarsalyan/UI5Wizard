@@ -13,7 +13,7 @@
 						</HBox>
 						<Wizard visible="{viewInitialModel>/visibleWizard}" id="POStatusWizard" finishButtonText="Finish"
 							class="sapUiResponsivePadding--header sapUiResponsivePadding--content" showNextButton="false">
-							<WizardStep id="POCreated" visible="{=${POStatusModel>/POCreate} === 'X' ? true : false}" title="PO Created"
+							<WizardStep id="POCreated"  title="PO Created"
 								activate="wizardCompletedHandler">
 								<VBox class="sapUiSmallMargin">
 									<f:SimpleForm id="POCreatedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
@@ -32,7 +32,7 @@
 									</f:SimpleForm>
 								</VBox>
 							</WizardStep>
-							<WizardStep id="POApprovedbySupplier" visible="{=${POStatusModel>/POApprovedbySupplier} ==='X' ? true : false}" title="PO Approval stage1"
+							<WizardStep id="POApprovedbySupplier" title="PO Approval stage1"
 								activate="wizardCompletedHandler">
 								<VBox class="sapUiSmallMargin">
 									<f:SimpleForm id="POApprovedBySupplyDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
@@ -57,7 +57,7 @@
 									</f:SimpleForm>
 								</VBox>
 							</WizardStep>
-							<WizardStep id="POApprovedbyProgrammer" visible="{=${POStatusModel>/POApprovedbyProgrammer} === 'X' ? true : false}"
+							<WizardStep id="POApprovedbyProgrammer"
 								title="PO Approval stage2" activate="wizardCompletedHandler">
 								<VBox class="sapUiSmallMargin">
 									<f:SimpleForm id="POApprovedByProgrammeDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
@@ -85,7 +85,7 @@
 									</f:SimpleForm>
 								</VBox>
 							</WizardStep>
-							<WizardStep id="POPicked" visible="{=${POStatusModel>/POPicked} === 'X' ? true : false}" activate="wizardCompletedHandler" title="PO Picked">
+							<WizardStep id="POPicked" activate="wizardCompletedHandler" title="PO Picked">
 								<VBox class="sapUiSmallMargin">
 									<f:SimpleForm id="POPickedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
 										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
@@ -112,7 +112,7 @@
 									</f:SimpleForm>
 								</VBox>
 							</WizardStep>
-							<WizardStep id="POLoaded" visible="{=${POStatusModel>/POLoaded} === 'X' ? true : false}" activate="wizardCompletedHandler" title="PO Loaded">
+							<WizardStep id="POLoaded"  activate="wizardCompletedHandler" title="PO Loaded">
 								<VBox class="sapUiSmallMargin">
 									<f:SimpleForm id="POLoadedDetails" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
 										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"

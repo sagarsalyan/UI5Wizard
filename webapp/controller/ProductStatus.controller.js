@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel"
-], function (Controller,JSONModel) {
+], function (Controller, JSONModel) {
 	"use strict";
 
 	return Controller.extend("Application.WizardTemplate.controller.ProductStatus", {
@@ -149,19 +149,23 @@ sap.ui.define([
 		onCheckStatus: function (oEvent) {
 			var that = this;
 			var PONum = that.getView().getModel("viewInitialModel").getProperty("/PONumber");
-			that.getView().getModel("viewInitialModel").setProperty("/visibleWizard", true);   
-// getting static data 
+			that.getView().getModel("viewInitialModel").setProperty("/visibleWizard", true);
+			// getting static data 
 			var sData = that.getView().getModel("wizardModel").getData();
-//added filter to get purchase order details based on given input value.
+			//added filter to get purchase order details based on given input value.
 			var sObj = sData.filter(function (item) {
 				return item.PONum === PONum;
 			});
-// Initialize model to display purchase order details.
+			
+			// change current step dynamically.
+			that.getView().byId("POStatusWizard").setCurrentStep(that.byId(sObj[0].Status));
+			
+			// Initialize model to display purchase order details.
 			var POStatusModel = new JSONModel(sObj[0]);
 			that.getView().setModel(POStatusModel, "POStatusModel");
-		
-// change current step dynamically.
-that.getView().byId("POStatusWizard").setCurrentStep(that.byId(sObj[0].Status));
+			that.getView().getModel("POStatusModel").refresh();
+
+			
 		}
 
 		/**

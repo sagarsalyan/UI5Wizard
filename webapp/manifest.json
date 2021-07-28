@@ -85,7 +85,7 @@
 				},
 				{
 					"name": "ObjectPage",
-					"pattern": "",
+					"pattern": "objectpage",
 					"target": [
 						"ObjectPage"
 					]
@@ -98,7 +98,7 @@
 					]
 				},{
 					"name": "ProductStatus",
-					"pattern": "p",
+					"pattern": "",
 					"target": [
 						"ProductStatus"
 					]
